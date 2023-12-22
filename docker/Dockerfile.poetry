@@ -1,0 +1,14 @@
+# syntax=docker/dockerfile:1
+FROM tf63/torch:1.13.0-cu117
+
+# 初期ユーザーの変更 (ベースコンテナで作成済み)
+USER user
+
+# poetryのインストール
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Poetryのパスを通す
+ENV PATH /home/user/.local/bin:$PATH
+
+# vscodeが仮想環境を読み込むようにする
+RUN poetry config virtualenvs.in-project true
