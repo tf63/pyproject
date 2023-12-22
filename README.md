@@ -18,3 +18,7 @@ https://packaging.python.org/en/latest/guides/distributing-packages-using-setupt
 semantic version
 
 https://semver.org/
+
+formatter linter周り
+
+https://data.gunosy.io/entry/linter_option_on_pyproject
