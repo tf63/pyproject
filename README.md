@@ -2,7 +2,26 @@
 
 GPU環境用のpythonテンプレート
 
-### torchをpoetryで入れる場合
+### 用法
+イメージのビルド
+```
+    bash docker.sh build
+```
+
+コンテナの起動
+```
+    bash docker.sh shell
+```
+
+poetry周り
+```
+    poetry install # pyproject.tomlからインストール
+    poetry add <パッケージ名> # パッケージをインストール
+    poetry remove <パッケージ名> # パッケージを削除
+```
+
+### 備考
+torchをpoetryで入れる場合
 
 ```
     poetry add https://download.pytorch.org/whl/cu117/torch-1.13.0%2Bcu117-cp38-cp38-linux_x86_64.whl
