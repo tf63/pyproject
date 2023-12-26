@@ -30,12 +30,12 @@ build()
 
 shell() 
 {
-    docker run --rm --gpus all --shm-size=16g -it -v $(pwd):/app -v $DATASET_DIRS:/dataset -v $DATA_DIRS:/data tf63/poetry /bin/bash
+    docker run --rm --gpus all --user user --shm-size=16g -it -v $(pwd):/app -v $DATASET_DIRS:/dataset -v $DATA_DIRS:/data tf63/poetry /bin/bash
 }
 
 root()
 {
-    docker run --rm --gpus all --user 0:0 --shm-size=16g -it -v $(pwd):/app -v $DATASET_DIRS:/dataset -v $DATA_DIRS:/data tf63/poetry /bin/bash
+    docker run --rm --gpus all --user root --shm-size=16g -it -v $(pwd):/app -v $DATASET_DIRS:/dataset -v $DATA_DIRS:/data tf63/poetry /bin/bash
 }
 
 if [[ $1 == "build" ]]; then

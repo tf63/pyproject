@@ -34,7 +34,8 @@ RUN apt update && \
     libsndfile1-dev \
     libgl1 \
     python3.8 \
-    python3-pip
+    python3-pip \
+    tree
 
 # rootでtorchを入れる
 RUN pip3 install --no-cache-dir -U pip && \

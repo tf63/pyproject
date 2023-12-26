@@ -21,7 +21,12 @@ poetry周り
 ```
 
 ### 備考
-torchをpoetryで入れる場合
+
+torchをpoetryで入れればワークディレクトリ配下の`.venv/`にtorchが入ってくれる
+
+そうするとVSCodeにコンテナをアタッチしなくとも仮想環境が使える
+
+しかし，ワークスペースごとにtorch (1.8GB)を入れる必要があるので注意
 
 ```
     poetry add https://download.pytorch.org/whl/cu117/torch-1.13.0%2Bcu117-cp38-cp38-linux_x86_64.whl
