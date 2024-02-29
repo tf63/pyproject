@@ -17,6 +17,11 @@ build_torch()
     docker build . -f docker/Dockerfile.torch --build-arg USER_UID=`(id -u)` --build-arg USER_GID=`(id -g)` -t tf63/torch:1.13.0-cu117
 }
 
+build_python()
+{
+    docker build . -f docker/Dockerfile.p --build-arg USER_UID=`(id -u)` --build-arg USER_GID=`(id -g)` -t tf63/torch:py-3.10.13
+}
+
 build_local()
 {
     docker build . -f docker/Dockerfile.poetry --build-arg USER_UID=`(id -u)` --build-arg USER_GID=`(id -g)` -t tf63/poetry
@@ -38,16 +43,25 @@ root()
     docker run --rm --gpus all --user root --shm-size=16g -it -v $(pwd):/app -v $DATASET_DIRS:/dataset -v $DATA_DIRS:/data tf63/poetry /bin/bash
 }
 
+python()
+{
+    docker run --rm --user user --shm-size=16g -it -v $(pwd):/app -v $DATASET_DIRS:/dataset -v $DATA_DIRS:/data tf63/torch:py-3.10.13 /bin/bash
+}
+
 if [[ $1 == "build" ]]; then
     build
 elif [[ $1 == "build_torch" ]]; then
     build_torch
 elif [[ $1 == "build_poetry" ]]; then
     build_poetry
+elif [[ $1 == "build_python" ]]; then
+    build_python
 elif [[ $1 == "shell" ]]; then
     shell 
 elif [[ $1 == "root" ]]; then
     root
+elif [[ $1 == "python" ]]; then
+    python
 else
     echo "error: invalid argument"
 fi
